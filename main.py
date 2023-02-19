@@ -1,4 +1,5 @@
 import sys
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QApplication, QTableWidget, QTableWidgetItem
 
 tablecont = [[1, "foo"],
@@ -12,7 +13,8 @@ table.setColumnCount(len(tablecont[0]))
 table.setHorizontalHeaderLabels(["int", "name"])
 
 for i, [code, name] in enumerate(tablecont):
-    item_code = QTableWidgetItem(code)
+    item_code = QTableWidgetItem()
+    item_code.setData(Qt.DisplayRole, code)
     item_name = QTableWidgetItem(name)
     table.setItem(i, 0, item_code)
     table.setItem(i, 1, item_name)
